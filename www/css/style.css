@@ -1,0 +1,78 @@
+/* Empty. Add your own CSS if you like */
+.fondo-vista, .view-container{
+    background-color:#ECEFF1;
+}
+.badge-info {
+    background-color: #00bcd4 !important;
+    color: #fff !important;
+}
+
+.bar-naranja {
+    background-color: #EA560C;
+    background-image: linear-gradient(0deg, #EA560C, #EA560C 50%, transparent 50%);
+    border-color: #EA560C;
+    color: #fff;
+}
+.bar-naranja .title {
+    color: #fff;
+}
+.bar-naranja.button.button-icon {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: transparent;
+}
+
+.bar-naranja .button.button-clear {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-color: transparent;
+    box-shadow: none;
+    color: #fff;
+    font-size: 17px;
+}
+
+.item-complex .item-content:hover{
+	background-color:#f3f3f3 ;
+	color:#CE4400;
+	//border-color: red;
+}
+
+/********* LIstado de Propuestas *********/
+.item_propuesta{
+    max-width:400px;
+    float:left;
+    //background:url('../img/camion.jpg') no-repeat 0px 0px;
+
+}
+.logoPartido{
+    width:30px;
+    height:30px;
+}
+.numeLista{
+    padding:10px 10px 10px 0px; 
+    font-size:2.5em; 
+    font-weight:bold;
+    color:#fff;
+}
+.item_propuesta h2.title{
+    font-size:20px;
+    color:#fff;
+}
+.item_propuesta  .subTitle{
+    font-size:14px;
+    color:#9B9B9B;
+}
+.item_propuesta .widget-actions a {
+    font-size: 13.5px;
+    margin-right: 5px;
+}
+.item_propuesta  h3.widget-title{
+     font-size:1.5em; 
+}
+.link_mas{
+    color:#FF0000;
+    font-size:11px;
+    text-decoration:none;
+}
+.link_mas:hover{
+    color:#930505;
+    text-decoration:none;
+}
