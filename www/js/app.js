@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('starter', ['ionic','starter.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -22,6 +22,8 @@ angular.module('starter', ['ionic'])
     }
   });
 })
+
+
 .config(function($stateProvider,$urlRouterProvider){
     $stateProvider
        .state('app', {
@@ -48,23 +50,48 @@ angular.module('starter', ['ionic'])
             }
           }
       })
+      .state('app.listTaxonomies', {
+          url: '/listTaxonomies',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/listTaxonomies.html',
+              controller: 'TaxListCtrl'
+            }
+          }
+      })
 
 
     $urlRouterProvider.otherwise("/app/home");
 
 })
 
+/****************** FACTORY **************************/
+
+
+
+/****************** FILTROS **************************/
 .filter('cortarTexto', function(){
   return function(input, limit){
     return (input.length > limit) ? input.substr(0, limit)+'...' : input;
   };
 })
 
+
+/******************** CONTROLLERS *******************/
 .controller('AppCtrl', function($scope) {
 
 })
 
 .controller('HomeCtrl', function($scope) {
+
+})
+
+.controller("TaxListCtrl",function($scope){
+    /*$scope.lists = restTaxonomies.query(function() {
+        console.log(restTaxonomies);
+      });*/
+  
+    $scope.titulo ="Daniel";
 
 })
 
