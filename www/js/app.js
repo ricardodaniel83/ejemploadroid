@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic','starter.services'])
+angular.module('starter', ['ionic','starter.controllers','starter.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform,$http) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -19,8 +19,14 @@ angular.module('starter', ['ionic','starter.services'])
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
-    }
+    } 
   });
+  var defaultHTTPHeaders = {
+    'Content-type': 'application/json',
+    'Accept': 'application/json'
+  };
+  $http.defaults.headers.post = defaultHTTPHeaders;
+
 })
 
 
@@ -65,94 +71,10 @@ angular.module('starter', ['ionic','starter.services'])
 
 })
 
-/****************** FACTORY **************************/
-
-
 
 /****************** FILTROS **************************/
 .filter('cortarTexto', function(){
   return function(input, limit){
     return (input.length > limit) ? input.substr(0, limit)+'...' : input;
   };
-})
-
-
-/******************** CONTROLLERS *******************/
-.controller('AppCtrl', function($scope) {
-
-})
-
-.controller('HomeCtrl', function($scope) {
-
-})
-
-.controller("TaxListCtrl",function($scope){
-    /*$scope.lists = restTaxonomies.query(function() {
-        console.log(restTaxonomies);
-      });*/
-  
-    $scope.titulo ="Daniel";
-
-})
-
-.controller('ListPropCtrl', function($scope,$stateParams) {
-  $scope.taxo = $stateParams.taxonomy;
-  $scope.arrayLists = [
-     {
-      _id:0,
-      name:"Expleantur manu graecam",
-      body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.",
-      state:"1",
-      visitsAll:1,
-      likeAll:0,
-      dislikeAll:0,
-      shareAll:0,
-      favoriteAll:1,
-      advocacyAll:0,
-      disagrementAll:0,
-      neutralAll:0,
-      uid:2,
-      positionX:"",
-      positionY:"",
-      taxonomy:1
-    },
-    {
-      _id:1,
-      name:" 2 Expleantur manu graecam",
-      body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.",
-      state:"1",
-      visitsAll:1,
-      likeAll:0,
-      dislikeAll:0,
-      shareAll:0,
-      favoriteAll:1,
-      advocacyAll:0,
-      disagrementAll:0,
-      neutralAll:0,
-      uid:2,
-      positionX:"",
-      positionY:"",
-      taxonomy:2
-    },
-    {
-      _id:3,
-      name:" 3 Expleantur manu graecam",
-      body:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.",
-      state:"1",
-      visitsAll:1,
-      likeAll:0,
-      dislikeAll:0,
-      shareAll:0,
-      favoriteAll:1,
-      advocacyAll:0,
-      disagrementAll:0,
-      neutralAll:0,
-      uid:2,
-      positionX:"",
-      positionY:"",
-      taxonomy:1
-    }
-  ];
-
-
 })
