@@ -30,15 +30,18 @@ angular.module('starter', ['ionic','starter.controllers','starter.services'])
 })
 
 
-.config(function($stateProvider,$urlRouterProvider){
+.config(function($stateProvider,$urlRouterProvider, $ionicConfigProvider){
+    $ionicConfigProvider.tabs.position('bottom');
     $stateProvider
        .state('app', {
+          cache: false,
           url: '/app',
           abstract: true,
           templateUrl: 'templates/menu.html',
           controller: 'AppCtrl'
       })
       .state('app.home', {
+          cache: false,
           url: '/home',
           views: {
             'menuContent': {
@@ -47,24 +50,78 @@ angular.module('starter', ['ionic','starter.controllers','starter.services'])
             }
           }
       })
-      .state('app.listPropuesta', {
-          url: '/listPropuesta/:taxonomy',
-          views: {
-            'menuContent': {
-              templateUrl: 'templates/listPropuesta.html',
-              controller: 'ListPropCtrl'
-            }
-          }
-      })
       .state('app.listTaxonomies', {
+          cache: false,
           url: '/listTaxonomies',
           views: {
             'menuContent': {
-              templateUrl: 'templates/listTaxonomies.html',
+              templateUrl: 'templates/taxonomies/lists.html',
               controller: 'TaxListCtrl'
             }
           }
       })
+      .state('app.saveTaxonomies', {
+          cache: false,
+          url: '/saveTaxonomies',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/taxonomies/save.html',
+              controller: 'TaxSaveCtrl'
+            }
+          }
+      })
+      .state('app.updateTaxonomies', {
+          cache: false,
+          url: '/updateTaxonomies/:id',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/taxonomies/update.html',
+              controller: 'TaxUpdCtrl'
+            }
+          }
+      })
+    .state('app.listProposalTaxonomy', {
+          cache: false,
+          url: '/listProposalTaxonomy',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/proposals/listsTaxonomy.html',
+              controller: 'ListPropTaxCtrl'
+            }
+          }
+      })
+    .state('app.listProposal',{
+         cache: false,
+          url: '/listProposal',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/proposals/list.html',
+              controller: 'ListPropCtrl'
+            }
+          }
+    })
+      .state('app.saveProposal', {
+          cache: false,
+          url: '/saveProposal',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/proposals/save.html',
+              controller: 'ProSaveCtrl'
+            }
+          }
+      })
+
+      .state('app.updateProposal', {
+          cache: false,
+          url: '/updateProposal/:id',
+          views: {
+            'menuContent': {
+              templateUrl: 'templates/proposals/update.html',
+              controller: 'ProUpdCtrl'
+            }
+          }
+      })
+
 
 
     $urlRouterProvider.otherwise("/app/home");

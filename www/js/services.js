@@ -2,20 +2,27 @@
 angular.module('starter.services',['ngResource'])
 
 
-.factory('addTaxonomias',function($resource){
-	return $resource('http://jsonplaceholder.typicode.com/users/:user',{user:"@user"});
-})
-/*
-.factory('Session', function ($http) {
-   //return $resource('http://localhost:3200/taxonomies/:id');
-   return 1;
+.factory('ServiTaxonomies',function($resource){
+	//return $resource('http://jsonplaceholder.typicode.com/users/:user',{user:"@user"});
+	return $resource('http://localhost:3200/api/taxonomies/:id',{id:"@id"},{
+			    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+  			});
 })
 
- */
-/*
-.factory('httpTaxonomies',function($http){
-	var postUsers = $http.get('http://localhost:5000/taxonomies')
-	postUsers.then(function(result) {
-	    return $scope.users = result.data;
-	});
-})*/
+.factory('ServiProposals',function($resource){
+	return $resource('http://localhost:3200/api/proposals/:id',{id:"@id"},{
+			    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+  			});
+})
+
+.factory('ServiComments',function($resource){
+	return $resource('http://localhost:3200/api/comments/:id',{id:"@id"},{
+			    update: {
+			      method: 'PUT' // this method issues a PUT request
+			    }
+  			});
+})

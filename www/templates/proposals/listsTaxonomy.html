@@ -1,0 +1,149 @@
+<ion-view view-title="Lista Propuestas" class="fondo-vista">
+  <ion-content>
+    <ul>
+      <li ng-repeat="list in lists" class="col-xs-12 col-sm-6 col-md-4 col-lg-4 item_propuesta ">
+	        <div class="list card">
+	        	
+	          <div class="item row" style="background:url('../img/camion_f.jpg') no-repeat 0px 0px ; background-size: 100% 100%; height:100px;">
+					<div class="col col-10 col-center"><div class="numeLista">5</div></div>
+					<div class="col col-75 col-center">
+						<h2 class="title">Izquierda Democratica</h2>
+						<p class="subTitle">November 05, 1955</p>
+					</div>
+				 	<div class="col col-15 col-center">
+				 		<img src="img/logo.png" class="img-responsive img-circle logoPartido">
+				 	</div>
+	          </div>
+	          <div class="item item-body">
+	          	<h3 class="widget-title">{{list.name}}</h3>
+	            <p style="text-align:justify;">
+	              {{list.description | cortarTexto:200 }}<a href="#" class="link_mas">leer más </a>
+	            </p>
+	         </div>
+	          <div class="item row">
+		         	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+		         		<a href="#" class="button button-small button-positive subdued" style="font-size: 10px;">
+		         			<i class="icon md-thumb-up" aria-hidden="true"></i> Like
+		         		</a>
+		             	 <a href="#" class="button button-small button-assertive subdued" style="font-size: 10px;">
+		             	 <i class="icon md-thumb-down" aria-hidden="true"></i> Dislike</a>
+		         	</div>
+					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
+						<div class="widget-actions pull-right">
+							<a onclick="openSocialShare();" href="javascript:void(0)">
+								<i class="icon md-share"></i>
+							</a>
+							<a ng-click="addValueType('{{list._id}}','favoriteAll')">
+								<i class="icon md-favorite"></i>
+								<span>{{list.favoriteAll}}</span>
+							</a>
+							<a ng-click="addValueType('{{list._id}}','visitsAll')">
+								<i class="icon md-eye"></i>
+								<span>{{list.visitsAll}}</span>
+							</a>
+							<a ng-click="addValueType('{{list._id}}','shareAll')">
+								<i class="icon md-library"></i>
+								<span>{{list.shareAll}}</span>
+							</a>
+							<a ng-click="addComments('{{list._id}}')">
+								<i class="icon md-comment"></i>
+								<span>{{list.abvocacyAll}}</span>
+							</a>
+						</div>
+					</div>
+	        	</div>
+		
+	        	<div class="panel animation-duration-1 animation-fade {{list._id}}"  style="display:none ">
+					<div style="padding: 30px"></div>
+					<div class="panel-heading">
+						<h3 style="margin:0px 10px ">
+							Comentarios
+							<a href="#" ng-click="openCommentForm('{{list._id}}')";>
+								<span class="pull-right label label-primary" style="font-size:12px; ">Comentar</span>
+							</a>
+						</h3>
+					</div>
+
+					<div class="panel-body container-fluid animation-duration-1 animation-fade formComment{{list._id}} " id="comentForm" style="display:none ">
+						<div style="padding: 30px"></div>
+							<form>
+								<!--<div class="form-group form-material">
+									<label class="control-label" for="fullname"> Nombre y Apellido</label>
+									<input type="text" class="form-control" id="fullname" ng-model="formData.name" name="fullname" />
+								</div>
+								<div class="form-group form-material">
+									<label class="control-label" for="email"> Email</label>
+									<input type="text" class="form-control" id="email" ng-model="formData.email" name="email"/>
+								</div> -->
+								<div class="form-group form-material">
+									<label class="control-label" for="comment"> Comentario</label>
+									<textarea class="form-control" id="comment" ng-model="formData.description" name="description"/> </textarea>
+								</div>
+								<div class="form-group form-material">
+									<label class="control-label" for="select"> Como evalua esta propuesta?</label>
+									<select class="form-control" id="select" ng-model="formData.evalua">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+									</select>
+								</div>
+								<div class="form-group form-material">
+									<label class="control-label" for="select"> Tú posición a esta propuesta es</label>
+									<ion-list>
+										  <ion-radio ng-model="formData.estado" ng-value="'A'">A FAVOR</ion-radio>
+										  <ion-radio ng-model="formData.estado" ng-value="'E'">En Contra</ion-radio>
+										  <ion-radio ng-model="formData.estado" ng-value="'N'">Neutro</ion-radio>
+									</ion-list>
+
+								</div>
+
+								<div class="form-group form-material">
+									<button type="button" class="btn btn-block btn-primary"> Enviar comentario</button>
+								</div>
+
+							</form>
+
+					</div>
+					<div class="panel-body container-fluid">
+						<ul class="list-group list-group-dividered list-group-full">
+							<li class="list-group-item">
+								<div class="media">
+										<div class="media-left">
+												<a class="avatar avatar-online" ng-click="">
+													<img src="img/portraits/2.jpg" />
+													<i></i>
+												</a>
+										</div>
+
+										<div class="media-body">
+											<h4 class="media-heading">
+												<small class="pull-right">hace 5m</small>
+												<a class="name">Eduardo Gracia</a> ha comentado
+											</h4>
+
+											<small> Hoy 5:50pm - 12.04.2016</small>
+											<div class="content well">
+												Aspernatur ad aspernari sapienter constringendos conspiratione locatus. Ii maiores aequo tollit, profecta iucundo pueros assentior velit circumcisaque error fastidium nostros. Utuntur deserunt solvantur.
+											</div>
+											<div class="action margin-top-10">
+												<button type="button" class="btn btn-danger btn-xs">
+													<i class="icon md-comment" aria-hidden="true"></i>
+													Responder
+												</button>
+											</div>
+
+										</div>
+								</div>
+
+							</li>
+						</ul>
+					</div>
+	        	</div>
+	         
+	     
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

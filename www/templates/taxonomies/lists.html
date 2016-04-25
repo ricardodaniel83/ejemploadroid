@@ -1,0 +1,30 @@
+<ion-view view-title="Categorias" >
+    <ion-content>
+      <ion-header-bar class="bar-positive">
+        <div class="buttons">
+          <button class="button button-icon icon ion-ios-minus-outline"
+            ng-click="data.showDelete = !data.showDelete; data.showReorder = false">
+          </button>
+        </div>
+         <h1 class="title"></h1>
+        <div class="button">
+          <button class="button " ui-sref="app.saveTaxonomies"> Nuevo
+          </button>
+        </div>
+       
+    </ion-header-bar>
+    
+    	<ion-list show-delete="data.showDelete" show-reorder="data.showReorder">
+        <div style="margin-top:40px"></div>
+      		<ion-item ng-repeat="list in lists" item="item" href="#/app/updateTaxonomies/{{list._id}}" class="item-remove-animate item-icon-right">
+            {{list.name}}
+            <i class="icon ion-ios-arrow-right"></i>
+             <ion-delete-button class="ion-minus-circled" ng-click="deleteTaxonomy('{{list._id}}')">
+             </ion-delete-button>
+           
+      		</ion-item>
+    	</ion-list>
+    
+  </ion-content>
+
+ </ion-view>

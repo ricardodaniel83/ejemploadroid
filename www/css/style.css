@@ -37,8 +37,8 @@
 
 /********* LIstado de Propuestas *********/
 .item_propuesta{
-    max-width:400px;
-    float:left;
+    //max-width:400px;
+    //float:left;
     //background:url('../img/camion.jpg') no-repeat 0px 0px;
 
 }
@@ -58,7 +58,7 @@
 }
 .item_propuesta  .subTitle{
     font-size:14px;
-    color:#9B9B9B;
+    color:#DDD;
 }
 .item_propuesta .widget-actions a {
     font-size: 13.5px;
@@ -75,4 +75,9 @@
 .link_mas:hover{
     color:#930505;
     text-decoration:none;
+}
+
+/************* BARAR COLORES ********/
+.bar-blue{
+    background-color: #009AB2;
 }
