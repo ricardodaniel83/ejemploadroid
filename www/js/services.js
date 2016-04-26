@@ -15,6 +15,10 @@ angular.module('starter.services',['ngResource'])
 	return $resource('http://localhost:3200/api/proposals/:id',{id:"@id"},{
 			    update: {
 			      method: 'PUT' // this method issues a PUT request
+			    },
+			    countTaxonomy:{
+			    	method: 'GET',
+			    	isArray: true
 			    }
   			});
 })

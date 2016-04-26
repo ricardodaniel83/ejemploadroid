@@ -8,6 +8,13 @@
 		    <label class="control-label" >Descripción</label>
 		    <textarea placeholder="Insertamos la categoría Economia para separa ...." ng-model="formData.description" class="form-control"></textarea>
 		  </div>
+		    <label class="item item-input item-select" style="background-color:#53A7FC; ">
+		     <div class="input-label" style="color:#fff">Columnas Inicio</div>
+		    	<select ng-model="formData.column" id="column" name="column">
+				      <option ng-repeat=" item in columns" value="{{item.value}}" 
+				      ng-selected="item.value == formData.column">{{item.value}}</option>
+    			</select>
+		  </label>
 		  <div class="form-group form-material">
 			  <button class="button button-full button-calm" ng-click="saveTaxonomy()">
 					Guardar
