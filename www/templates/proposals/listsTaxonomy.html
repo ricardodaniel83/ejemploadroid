@@ -22,30 +22,30 @@
 	         </div>
 	          <div class="item row">
 		         	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-		         		<a href="#" class="button button-small button-positive subdued" style="font-size: 10px;">
+		         		<a ng-click="addValueType(list,'likeAll')" class="button button-small button-positive subdued" style="font-size: 10px;">
 		         			<i class="icon md-thumb-up" aria-hidden="true"></i> Like
 		         		</a>
-		             	 <a href="#" class="button button-small button-assertive subdued" style="font-size: 10px;">
+		             	 <a ng-click="addValueType(list,'dislikeAll')" class="button button-small button-assertive subdued" style="font-size: 10px;">
 		             	 <i class="icon md-thumb-down" aria-hidden="true"></i> Dislike</a>
 		         	</div>
 					<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8">
 						<div class="widget-actions pull-right">
-							<a onclick="openSocialShare();" href="javascript:void(0)">
+							<a ng-click="viewRedes()">
 								<i class="icon md-share"></i>
 							</a>
-							<a ng-click="addValueType('{{list._id}}','favoriteAll')">
+							<a ng-click="addValueType(list,'favoriteAll')">
 								<i class="icon md-favorite"></i>
 								<span>{{list.favoriteAll}}</span>
 							</a>
-							<a ng-click="addValueType('{{list._id}}','visitsAll')">
+							<a href="#">
 								<i class="icon md-eye"></i>
 								<span>{{list.visitsAll}}</span>
 							</a>
-							<a ng-click="addValueType('{{list._id}}','shareAll')">
+							<a ng-click="addValueType(list,'shareAll')">
 								<i class="icon md-library"></i>
 								<span>{{list.shareAll}}</span>
 							</a>
-							<a ng-click="addComments('{{list._id}}')">
+							<a ng-click="addComments('{{list._id}}',list)">
 								<i class="icon md-comment"></i>
 								<span>{{list.abvocacyAll}}</span>
 							</a>

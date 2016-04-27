@@ -82,7 +82,7 @@ angular.module('starter', ['ionic','starter.controllers','starter.services'])
       })
     .state('app.listProposalTaxonomy', {
           cache: false,
-          url: '/listProposalTaxonomy',
+          url: '/listProposalTaxonomy/:id',
           views: {
             'menuContent': {
               templateUrl: 'templates/proposals/listsTaxonomy.html',

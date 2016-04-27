@@ -18,7 +18,15 @@ angular.module('starter.services',['ngResource'])
 			    },
 			    countTaxonomy:{
 			    	method: 'GET',
-			    	isArray: true
+			    	url:'http://localhost:3200/api/proposals/:id/taxonomy/count',
+			    	params: {id:'@id'},
+			    	isArray:false,
+			    },
+			    listProposalByTaxonomy:{
+			    	method: 'GET',
+			    	url:'http://localhost:3200/api/proposals/:id/taxonomy',
+			    	params: {id:'@id'},
+			    	isArray:true,
 			    }
   			});
 })

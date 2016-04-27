@@ -2,10 +2,10 @@
 	 <ion-content class="animated fadeIn">
 		<ul class="blocks no-space col-xs-12">
 		<li class="widget col-xs-{{item.column}}" ng-repeat="item in list" >
-			<a href="#/app/listProposalTaxonomy" style="display: block; text-decoration:none;">
+			<a href="#/app/listProposalTaxonomy/{{item._id}}" style="display: block; text-decoration:none;">
 				<div class="cover" style="padding-bottom:0px; margin-bottom:0px;">
 				<img class="cover-image" ng-src="img/{{item.fhid.filename}}" alt="...">
-					<div style="background-color:transparent;" class="overlay-panel overlay-background-fixed text-center vertical-align">
+					<div style="background-color:transparent; vertical-align: top;" class="overlay-panel overlay-background-fixed text-center vertical-align">
 						<div class="vertical-align-middle">
 							<div class="widget-time">
 								<span style="font-size:1.5em;font-weight:bold; color:white;">{{item.name}}</span>

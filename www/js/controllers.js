@@ -5,10 +5,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function($scope,ServiTaxonomies) {
+.controller('HomeCtrl', function($scope,ServiTaxonomies,ServiProposals) {
     $scope.list = ServiTaxonomies.query();
-  
-
 })
 
 
@@ -134,41 +132,50 @@ angular.module('starter.controllers', [])
       };
   
 })
-.controller('ListPropTaxCtrl', function($scope,ServiProposals,ServiComments) {
-    //$scope.taxo = $stateParams.taxonomy;  /* Pasar datos  al controlador usamos $stateParams*/
-    $scope.lists = ServiProposals.query();
-    $scope.addValueType = function(idProp,idType){
-      var objProposal = ServiProposals.get({id:idProp}, function(data){
-          objProposal.name = "Estoy modificando";
-          objProposal.$update();
-      });
-        //console.log($scope.objProposal);
-        /*alert(objProposal.favoriteAll);
-      switch(idType){
-         case 'favoriteAll':
-            objProposal.favoriteAll = objProposal.favoriteAll + 1; 
-            alert(objProposal.favoriteAll);
-         break;
-         case 'visitsAll':
-            objProposal.visitsAll = objProposal.visitsAll +1;
-         break;
-         case 'shareAll':
-            objProposal.shareAll = objProposal.shareAll + 1;
-         break;
-         case 'abvocacyAll':
-            objProposal.abvocacyAll = objProposal.abvocacyAll +1;
-         break;
-      };*/
-
-    }
+.controller('ListPropTaxCtrl', function($scope,ServiProposals,ServiComments,$stateParams) {
+    //$scope.taxo = $stateParams.id;  /* Pasar datos  al controlador usamos $stateParams*/
+    $scope.lists = ServiProposals.listProposalByTaxonomy({id:$stateParams.id});
+    $scope.addValueType = function(objProp,idType){
+        //alert("id: "+idProp+" type:"+idType);
+        
+        
+       /* $scope.campo ={};
+        ServiProposals.get({id:idProp}, function(dato){
+             switch(idType){
+                  case 'likeAll':
+                    $scope.campo = {likeAll: dato.likeAll + 1} ;
+                 break;
+                  case 'dislikeAll':
+                   $scope.campo = {dislikeAll: dato.dislikeAll + 1} ;
+                   
+                 break;
+                 case 'favoriteAll':
+                   $scope.campo = {favoriteAll: dato.favoriteAll + 1} ;
+                   
+                 break;
+                 case 'visitsAll':
+                    $scope.campo = {visitsAll: dato.visitsAll + 1} ;
+                    
+                 break;
+                 case 'shareAll':
+                   $scope.campo = {shareAll: dato.shareAll+ 1} ;
+                    
+                 break;
+              };
+             ServiProposals.update({id:idProp},$scope.campo);
+        });*/
+        
+         
+    };
 
     $scope.openCommentForm = function(idProp){
        $(".formComment"+idProp).toggle();
       $scope.formComment ={}
     }
 
-    $scope.addComments = function(idProp){
+    $scope.addComments = function(idProp,objProp){
       $("."+idProp).toggle();
+      console.log(objProp._id);
     };
 })
 
