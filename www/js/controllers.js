@@ -1,8 +1,9 @@
 angular.module('starter.controllers', [])
 
 /*********** CONTROLADORES INICIO APLICACION **************/
-.controller('AppCtrl', function($scope) {
-
+.controller('AppCtrl', function($scope,LoginSession) {
+      $scope.validateLogin = LoginSession.state;
+      console.log(LoginSession.state);
 })
 
 .controller('HomeCtrl', function($scope,ServiTaxonomies,ServiProposals) {
@@ -135,49 +136,76 @@ angular.module('starter.controllers', [])
 .controller('ListPropTaxCtrl', function($scope,ServiProposals,ServiComments,$stateParams) {
     //$scope.taxo = $stateParams.id;  /* Pasar datos  al controlador usamos $stateParams*/
     $scope.lists = ServiProposals.listProposalByTaxonomy({id:$stateParams.id});
+    $scope.formData={};
     $scope.addValueType = function(objProp,idType){
-        //alert("id: "+idProp+" type:"+idType);
-        
-        
-       /* $scope.campo ={};
-        ServiProposals.get({id:idProp}, function(dato){
-             switch(idType){
-                  case 'likeAll':
-                    $scope.campo = {likeAll: dato.likeAll + 1} ;
-                 break;
-                  case 'dislikeAll':
-                   $scope.campo = {dislikeAll: dato.dislikeAll + 1} ;
-                   
-                 break;
-                 case 'favoriteAll':
-                   $scope.campo = {favoriteAll: dato.favoriteAll + 1} ;
-                   
-                 break;
-                 case 'visitsAll':
-                    $scope.campo = {visitsAll: dato.visitsAll + 1} ;
-                    
-                 break;
-                 case 'shareAll':
-                   $scope.campo = {shareAll: dato.shareAll+ 1} ;
-                    
-                 break;
-              };
-             ServiProposals.update({id:idProp},$scope.campo);
-        });*/
-        
-         
+         switch(idType){
+            case 'likeAll':
+              ServiProposals.update({id:objProp._id},{likeAll: objProp.likeAll + 1});
+           break;
+            case 'dislikeAll':
+              ServiProposals.update({id:objProp._id},{dislikeAll: objProp.dislikeAll + 1});
+             
+           break;
+           case 'favoriteAll':
+              ServiProposals.update({id:objProp._id},{favoriteAll: objProp.favoriteAll + 1});
+           break;
+          };  
     };
+
 
     $scope.openCommentForm = function(idProp){
        $(".formComment"+idProp).toggle();
-      $scope.formComment ={}
     }
 
-    $scope.addComments = function(idProp,objProp){
-      $("."+idProp).toggle();
-      console.log(objProp._id);
+    $scope.saveComments = function(){
+      console.log($scope.formData);
+    }
+
+    $scope.viewComments = function(objProp){
+      $("."+objProp._id).toggle();
     };
 })
 
 /*********** CONTROLADORES DEL CRUD COMENTARIOS ***********/
 
+
+
+/*********** CONTROLADORES LOGIN ***********/
+.controller('SignUpCtrl', function($scope,ServiUser,$state) {
+  $scope.data={
+    username:"",
+    email:"",
+    password:"",
+    state:"A",
+    positionX:"",
+    positionY:"",
+    picture:"5722680c2364b69cd0030b7f",
+  }
+  $scope.signupEmail = function(){
+      ServiUser.save($scope.data);
+       $state.go('app.login');
+       console.log($scope.data);
+  }
+})
+
+.controller('ProfileCtrl', function($scope) {
+
+})
+
+.controller('LoginCtrl', function($scope,ServiUser,$state,LoginSession) {
+  $scope.data ={};
+
+  $scope.loginEmail = function(){
+  $scope.message ={};
+    ServiUser.validateLogin({username:$scope.data.username,pass:$scope.data.password}, function(message){
+          if(message.mensaje === "true"){
+              LoginSession.state = true;
+              console.log(LoginSession.state);
+              //$state.go('app.home');
+          }else{
+            $scope.message = message;
+          }
+    }); 
+    
+  }
+})

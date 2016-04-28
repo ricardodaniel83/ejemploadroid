@@ -29,7 +29,6 @@ angular.module('starter', ['ionic','starter.controllers','starter.services'])
 
 })
 
-
 .config(function($stateProvider,$urlRouterProvider, $ionicConfigProvider){
     $ionicConfigProvider.tabs.position('bottom');
     $stateProvider
@@ -118,6 +117,36 @@ angular.module('starter', ['ionic','starter.controllers','starter.services'])
             'menuContent': {
               templateUrl: 'templates/proposals/update.html',
               controller: 'ProUpdCtrl'
+            }
+          }
+      })
+      .state('app.signup',{
+          cache:false,
+          url:'/signUp',
+          views:{
+            'menuContent':{
+              templateUrl:'templates/users/sign_up.html',
+              controller:'SignUpCtrl',
+            }
+          }
+      })
+      .state('app.profile',{
+          cache:false,
+          url:'/profile',
+          views:{
+            'menuContent':{
+              templateUrl:'templates/users/profile.html',
+              controller:'ProfileCtrl',
+            }
+          }
+      })
+      .state('app.login',{
+          cache:false,
+          url:'/login',
+          views:{
+            'menuContent':{
+              templateUrl:'templates/users/login.html',
+              controller:'LoginCtrl',
             }
           }
       })

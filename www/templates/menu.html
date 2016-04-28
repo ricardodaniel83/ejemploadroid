@@ -19,26 +19,36 @@
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/home">
+        <ion-item menu-close href="#/app/home" >
           <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
           <span class="site-menu-title">Home</span>
         </ion-item>
-        <ion-item menu-close href="#/app/search">
+        <ion-item menu-close href="#/app/search" ng-show="validateLogin">
             <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
                 <span class="site-menu-title">Perfil</span>
         </ion-item>
-        <ion-item menu-close href="#/app/listProposal">
+        <ion-item menu-close href="#/app/listProposal" ng-show="validateLogin">
            <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
                 <span class="site-menu-title">Propuestas</span>
         </ion-item>
-        <ion-item menu-close href="#/app/listTaxonomies">
+        <ion-item menu-close href="#/app/listTaxonomies" ng-show="validateLogin">
            <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
                 <span class="site-menu-title">Categorias</span>
         </ion-item>
          
-        <ion-item menu-close href="#/app/playlists">
+        <ion-item menu-close href="#/app/playlists" ng-show="validateLogin">
            <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
                 <span class="site-menu-title">Cerrar sessión</span>
+        </ion-item>
+
+        <ion-item menu-close href="#/app/login" ng-show="!validateLogin">
+           <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Login</span>
+        </ion-item>
+
+        <ion-item menu-close href="#/app/signUp" ng-show="!validateLogin">
+           <i class="site-menu-icon md-view-dashboard" aria-hidden="true"></i>
+                <span class="site-menu-title">Crear Cuenta</span>
         </ion-item>
       </ion-list>
     </ion-content>
