@@ -1,9 +1,9 @@
 angular.module('starter.controllers', [])
 
 /*********** CONTROLADORES INICIO APLICACION **************/
-.controller('AppCtrl', function($scope,LoginSession) {
-      $scope.validateLogin = LoginSession.state;
-      console.log(LoginSession.state);
+.controller('AppCtrl', function($scope) {
+      $scope.validateLogin = true;
+      
 })
 
 .controller('HomeCtrl', function($scope,ServiTaxonomies,ServiProposals) {
@@ -192,16 +192,14 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LoginCtrl', function($scope,ServiUser,$state,LoginSession) {
+.controller('LoginCtrl', function($scope,ServiUser,$state) {
   $scope.data ={};
 
   $scope.loginEmail = function(){
   $scope.message ={};
     ServiUser.validateLogin({username:$scope.data.username,pass:$scope.data.password}, function(message){
           if(message.mensaje === "true"){
-              LoginSession.state = true;
-              console.log(LoginSession.state);
-              //$state.go('app.home');
+              
           }else{
             $scope.message = message;
           }

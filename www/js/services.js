@@ -52,7 +52,3 @@ angular.module('starter.services',['ngResource'])
 			    }
   			});
 })
-.service('LoginSession', function () {
-  this.state = false;
-  this.uid = "";
-});
